@@ -5,9 +5,9 @@
     "moduleResolution": "Bundler",
     "strict": true,
     "skipLibCheck": true,
-    "lib": ["ESNext", "WebWorker"],
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "isolatedModules": true,
+    "useDefineForClassFields": true,
+    "lib": ["ESNext"]
   },
-  "exclude": ["client"]
+  "include": ["./src/**/*", "vite-env.d.ts"]
 }

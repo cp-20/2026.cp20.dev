@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cp20.dev</title>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta property="og:title" content="cp20.dev" />
+    <meta property="og:description" content="Try: curl https://cp20.dev" />
+    <meta property="og:image" content="https://cp20.dev/og.png" />
+    <meta property="og:url" content="https://cp20.dev" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://cp20.dev/og.png" />
+  </head>
+  <body>
+    <section
+      id="terminal"
+      class="terminal-shell"
+      aria-label="Terminal output"
+    ></section>
+    <script type="module" src="/src/terminal-client.ts"></script>
+    <div class="mobile-controls">
+      <button id="help-button">help</button>
+      <button id="clear-button">clear</button>
+    </div>
+  </body>
+</html>

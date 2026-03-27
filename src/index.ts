@@ -1,9 +1,16 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import { registerProviders } from "./contents";
 
-const app = new Hono()
+const app = new Hono<{ Bindings: CloudflareBindings }>();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+registerProviders(app);
 
-export default app
+app.notFound((c) => {
+  const assets = c.env.ASSETS;
+  if (assets) {
+    return assets.fetch(c.req.raw);
+  }
+  return c.text("Not Found", 404);
+});
+
+export default app;
