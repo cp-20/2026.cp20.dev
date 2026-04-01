@@ -33,6 +33,14 @@ const isBrowserNavigation = (request: Request): boolean => {
   return fetchDest === "document" || accept.split(",").includes("text/html");
 };
 
+const crawlerUserAgentPattern =
+  /(googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit|twitterbot|linkedinbot|discordbot|slackbot|whatsapp|applebot|line|traq-ogp-fetcher-curl-bot\/)/i;
+
+const isCrawlerRequest = (request: Request): boolean => {
+  const userAgent = request.headers.get("user-agent") ?? "";
+  return crawlerUserAgentPattern.test(userAgent);
+};
+
 const contentsProviders: Record<string, ContentsProvider> = {
   "/": WhoamiProvider,
   "/articles": ArticlesProvider,
@@ -47,7 +55,7 @@ export const registerProviders = (
 ) => {
   for (const [path, provider] of Object.entries(contentsProviders)) {
     app.get(path, async (c) => {
-      if (isBrowserNavigation(c.req.raw)) {
+      if (isBrowserNavigation(c.req.raw) || isCrawlerRequest(c.req.raw)) {
         const assets = c.env.ASSETS;
 
         if (assets) {
