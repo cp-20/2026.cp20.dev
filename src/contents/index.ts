@@ -34,7 +34,7 @@ const isBrowserNavigation = (request: Request): boolean => {
 };
 
 const crawlerUserAgentPattern =
-  /(googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit|twitterbot|linkedinbot|discordbot|slackbot|whatsapp|applebot|line|traq-ogp-fetcher-curl-bot\/)/i;
+  /(googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit|twitterbot|linkedinbot|discordbot|slackbot|whatsapp|applebot|line|traq-ogp-fetcher-curl-bot)/i;
 
 const isCrawlerRequest = (request: Request): boolean => {
   const userAgent = request.headers.get("user-agent") ?? "";
